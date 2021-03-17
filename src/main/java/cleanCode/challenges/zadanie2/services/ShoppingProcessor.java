@@ -4,16 +4,16 @@ import cleanCode.challenges.zadanie2.entity.Customer;
 import cleanCode.challenges.zadanie2.entity.Order;
 import cleanCode.challenges.zadanie2.entity.OrderDto;
 import cleanCode.challenges.zadanie2.entity.Product;
-import cleanCode.challenges.zadanie2.repository.Repository;
+import cleanCode.challenges.zadanie2.repository.OrderRepository;
 
 public class ShoppingProcessor {
 
     private InformationService informationService;
-    private Repository<Order> orderRepository;
+    private OrderRepository orderRepository;
     private OrderService orderService;
     private PaymentService paymentService;
 
-    public ShoppingProcessor(InformationService informationService, Repository<Order> orderRepository,
+    public ShoppingProcessor(InformationService informationService, OrderRepository orderRepository,
                              OrderService orderService, PaymentService paymentService) {
         this.informationService = informationService;
         this.orderRepository = orderRepository;
@@ -21,9 +21,9 @@ public class ShoppingProcessor {
         this.paymentService = paymentService;
     }
 
-    public OrderDto process(Customer customer, Product ... products){
+    public OrderDto process(OrderRequest orderRequest){
 
-        Order order = orderService.createOrder(products);
+        Order order = orderService.createOrder(orderRequest.getProducts());
         boolean isPaid = paymentService.pay(order);
 
         if (isPaid){
@@ -33,6 +33,6 @@ public class ShoppingProcessor {
             informationService.errorMessage();
         }
 
-        return new OrderDto(customer,isPaid,order);
+        return new OrderDto(orderRequest.getCustomer(),isPaid,order);
     }
 }
