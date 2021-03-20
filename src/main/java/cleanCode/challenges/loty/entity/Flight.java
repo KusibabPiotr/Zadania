@@ -18,6 +18,10 @@ public final class Flight {
         this.idNumber = idNumber;
     }
 
+    public int getIdNumber() {
+        return idNumber;
+    }
+
     public String getIndirectAirport() {
         return indirectAirport;
     }

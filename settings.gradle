@@ -1,2 +1,3 @@
 rootProject.name = 'illaZadniaGit'
+include 'spring'
 

@@ -6,12 +6,25 @@ public final class Customer {
     private final String lastName;
     private final String address;
     private final String phoneNumber;
+    private final String payPalAccountName;
+    private final String email;
 
-    public Customer(final String firstName,final String lastName,final String address,final String phoneNumber) {
+    public Customer(final String firstName,final String lastName,final String address,final String phoneNumber,
+                    String payPalAccountName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
         this.phoneNumber = phoneNumber;
+        this.payPalAccountName = payPalAccountName;
+        this.email = email;
+    }
+
+    public String getPayPalAccountName() {
+        return payPalAccountName;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public String getFirstName() {
@@ -32,8 +45,6 @@ public final class Customer {
 
     @Override
     public String toString() {
-        return "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                '}';
+        return firstName + " " + lastName;
     }
 }

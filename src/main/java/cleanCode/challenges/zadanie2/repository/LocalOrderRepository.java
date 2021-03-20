@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class LocalOrderOrderRepository implements OrderRepository {
+public final class LocalOrderRepository implements OrderRepository {
 
     private final List<Order> orders = new ArrayList<>();
 
